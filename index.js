@@ -97,7 +97,8 @@ remember in vanila js we used to do thing .getElementById .innerhtml but with re
 /* How to do functional Programming ? see below The concept of immutibility
 what does it mean?? 
 -it do not change any data Always return a new copy
--?How does it happen Take an object with your mother's name and your age:
+Note: function argument are refference to actual data in JS
+-Question❓❓: How does it happen Take an object with your mother's name and your age:
 Now,Create an obj for your sibling(e.g tanvi) by age difference by 4 from into your age*/
 
 let sourabh = {mother:"Savita",age:24};
@@ -105,10 +106,21 @@ console.log(sourabh)
 let mrunal = {...sourabh,age:sourabh.age - 4}
 console.log(mrunal) //called immutibility doesn't change the data 
 
+console.log(sourabh === mrunal)
+
 // create a copy of sourabh (avoid)
-mrunal = sourabh;
+mrunal = sourabh; //it create a refference not copy itself
 console.log("mrunal age",mrunal)
 mrunal.age = sourabh.age - 4
 console.log("Mrunal Age Updated",mrunal)
-// This is anothr way to change age but it won't help us it show inconcitency because it chane value of sourabh see below e.g.
+// This is anothr way to change age but it won't help us it show inconcitency because it chane value of sourabh see below e.g. mrunal age is Updated but along with sourabh also Updated we didn't want this we want immutibility(unchange) this copy didn't work
 console.log("Sourabh's Age Updated",sourabh)
+
+// Question❓❓: take an arry with 5 color create another arry by adding two color on it
+let arr1 = ["red","green","blue","pink","white"];
+let arr2 = [...arr1,"yellow","black"];
+console.log("Updated One",arr2)
+console.log("Original One",arr1);
+console.log(arr1 === arr2)
+
+
