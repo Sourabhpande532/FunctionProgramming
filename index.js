@@ -94,7 +94,7 @@ remember in vanila js we used to do thing .getElementById .innerhtml but with re
 -super easy to test
 */
 
-/* How to do functional Programming ? see below The concept of immutibility
+/*🤔 How to do functional Programming ? see below The concept of 🤔immutibility
 what does it mean?? 
 -it do not change any data Always return a new copy
 Note: function argument are refference to actual data in JS
@@ -122,5 +122,33 @@ let arr2 = [...arr1,"yellow","black"];
 console.log("Updated One",arr2)
 console.log("Original One",arr1);
 console.log(arr1 === arr2)
+
+/* 🤔 Pure Functions 
+input ➡️➡️⬆️📔 ➡️➡️⬆️Output
+for same input the Output will Always be same 
+it has 3 rule Always follow 
+-🍽️At least one Argument,
+-🍽️return a value or other function
+-🍽️should not mutate any of it's Argument
+Statement: write a function birthday() to take a person name's and age in an objects and increase age. 
+*/
+
+// old approach 
+// function birthday(name,age){    
+// console.log(`The name of birthday boy is ${name} & and now his turn it into ${age+1}`)
+// }
+// let birthdayInfo = {name:"Manushi",age:21};
+// birthday(birthdayInfo.name, birthdayInfo.age)
+
+/* Only if you want to change one peace of object age so follow this methode using ES6 So today you know name and age but some times or tommarow that person can have address,email,details then what you would do anything which inside object{} copy all like this ...person and change rest of thing and change one peace of code i.e age we didn't change Original obj */
+
+const calculateBirthAge = (person)=>({
+    ...person, age: person.age + 1
+})
+let rahulBirthday = {name:"Rahul Sinha",address:"Vimal Chouk", age:34};
+console.log("current age",rahulBirthday)
+let afterBirthdayAge = calculateBirthAge(rahulBirthday);
+console.log("Updated age",afterBirthdayAge)
+console.log(rahulBirthday === afterBirthdayAge)
 
 
