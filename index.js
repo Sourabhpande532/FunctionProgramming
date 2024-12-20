@@ -146,7 +146,8 @@ Statement: write a function birthday() to take a person name's and age in an obj
 // let birthdayInfo = {name:"Manushi",age:21};
 // birthday(birthdayInfo.name, birthdayInfo.age)
 
-/* Only if you want to change one peace of object age so follow this methode using ES6 So today you know name and age but some times or tommarow that person can have address,email,details then what you would do anything which inside object{} copy all like this ...person and change rest of thing and change one peace of code i.e age we didn't change Original obj */
+/* 
+Only if you want to change one peace of object age so follow this methode using ES6 So today you know name and age but some times or tommarow that person can have address,email,details then what you would do anything which inside object{} copy all like this ...person and change rest of thing and change one peace of code i.e age we didn't change Original obj */
 
 const calculateBirthAge = ( person ) => ( {
   ...person,
@@ -162,9 +163,18 @@ console.log( rahulBirthday === afterBirthdayAge );
 - it can take function as Arguments
 - return function (it can)
 - or both 
+
+FILTER:
 firstly understand: what is Array.filter() and what filter does here -filter takes an function an run its on every element of array see example e.g see 
+-it's return an array 
 first it'll check if condition true or false if true Then put it into an array [] if condition false Discard value ....
 Note: filter is chota bhai aap map
+similary for filter there is function defined 
+[3,34,4,23,4].filter(fn)
+let fn = num => num < 10 //return either true or false 
+1)filter'll see there is array & function & i've been called i'll take one by one e.g 3 => 3 < 10 :true = 3
+34 = 3< 34 :false = discard ... all value put into new array and this is how All works!
+
 */
 const word = ["sourabh","prashant","pande","Savita","Bhiwapur"];
 const result = word.filter((words)=> words.length > 6);
@@ -173,8 +183,10 @@ console.log(result)
 /* Problem Statement: 
 Write a function which can tell whether a number is less than 10 or not, supply this function to Array.filter() to get an array with more than  no 10's in it*/
 const numberArray = [2,34,5,6,66,4,9,10];
-const isMoreThan10 = num => num > 10;
-let supplyFunction = numberArray.filter(isMoreThan10) //part Declarative 
+//it's more readable and constructive methode
+const isMoreThan10 = num => num > 10; 
+// Declarative 
+let supplyFunction = numberArray.filter(isMoreThan10) 
 // const resultArr = numberArray.filter((num)=>num.length < 10)
 console.log(supplyFunction)
 
@@ -186,15 +198,40 @@ console.log(supplyFunction)
 //   return num+2
 // })
 // console.log(isIncreBy2) Or .map is immutate and pure function it doesn't change Original one 
-const isIncrementBy2 = num => num + 2; // you can use this multiple no. of times it Saves Times instead individual it's ok outside as well as inside np;
-console.log("Updated",numberArray.map(isIncrementBy2))
-console.log(numberArray === numberArray.map(isIncrementBy2))
 
-/* [].reduce(function)
+
+/* MAP 
+Explanation:let's have  
+NOTE: 
+-.Map takes a function run that function for every element in the array and every iteration it return one item at a time talk about function(fn) this function return one item at time see below 
+-And Map takes this all item and put it into new array and return it.
+CODE:
+[2,3,4,345,3].map(fn)
+let fn = num => num + 2; 
+it'll start check one by one 2 => 2+2 = 4;...till 3 = 3+2 = 5;
+.map is emmutate and pure function it doesn't change Original one
+*/
+const isIncrementBy2 = num => num + 2; 
+/*
+ why outside? if you feel it can use this multiple no. of times it Saves Times/best practice instead individual it's ok outside as well as inside np; */
+console.log("Updated",numberArray.map(isIncrementBy2))
+console.log(numberArray === numberArray.map(isIncrementBy2)) //false
+
+
+/* [].reduce(fn)
 -To return one final value after inerating on every item in a array 
 -basically it takes a function and it returns one value it reduces the array into one value 
--it's very important without this you'll not understand react 
+-it's very important without this you'll not understand half of react 
+-reducer function takes 4 Argument
 -METHODE: 
-
 NOTE: H.W Can you write your own reduce using for loop Ask in interview Question❓
 */
+const array1 = [1,2,3,4];
+const reducer = (preVal,currVal)=>preVal + currVal;
+/* this reducer is function & you'r returning this if you don't return this values the next iteration it's run it will not have previous value it'll have undefined how becz the preVal become currVal And this is how it'll 
+1,2,3,4; 0+1 => 1; 1 + 2 = 3; 3+3=6; 6+4=10
+return of function it's become preVal play's crusial role for next iteration
+NOTE: preVal Always by default zero
+*/
+console.log(array1.reduce(reducer))//10
+console.log(array1.reduce(reducer,5))//15
