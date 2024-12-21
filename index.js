@@ -221,17 +221,78 @@ console.log(numberArray === numberArray.map(isIncrementBy2)) //false
 /* [].reduce(fn)
 -To return one final value after inerating on every item in a array 
 -basically it takes a function and it returns one value it reduces the array into one value 
--it's very important without this you'll not understand half of react 
+-it takes accumalator and currentValue talk about accumalator it's basically function fn will take acc,curr kya accmulate kr rahe coming from previous one,what is current value and value of array one at a time 
+#CODE: [].reduce(fn)
+fn(acc,curr)
+acc => coming from previous run  
+curr => value of array one at a time 
+return => Updated value of accumalator
+
+-it's very important without this you'll not understand half of react like redux,useReducer 
 -reducer function takes 4 Argument
 -METHODE: 
 NOTE: H.W Can you write your own reduce using for loop Ask in interview Question❓
+How does it see follow example
 */
 const array1 = [1,2,3,4];
+// create function separately for reuse & use pure function
 const reducer = (preVal,currVal)=>preVal + currVal;
-/* this reducer is function & you'r returning this if you don't return this values the next iteration it's run it will not have previous value it'll have undefined how becz the preVal become currVal And this is how it'll 
+/* this reducer is function & you'r returning this if you don't return this values the next iteration it's run it will not have previous value it'll have undefined how becz the preVal become currVal And this is how it'll preVal 0 by default
 1,2,3,4; 0+1 => 1; 1 + 2 = 3; 3+3=6; 6+4=10
-return of function it's become preVal play's crusial role for next iteration
+return of function(preVal+currVal) it's become preVal play's crusial role for next iteration How does it see follow example
 NOTE: preVal Always by default zero
 */
 console.log(array1.reduce(reducer))//10
 console.log(array1.reduce(reducer,5))//15
+
+/* reduce:Explanation
+Task: sum of all the number which is less than 10 
+[1,3,5,99,11,12].reduce(reducer,0)
+-everytime that reducer function will run it'll get two value 
+(acc,curr) value & you can run anything 
+=>if(curr < 10){
+acc = acc + curr
+}
+return acc; 
+(0,1)=> 1<10; if true; then 0+1 = return 1(1 is stored)
+(1,3)=> 3<10; if true; then 1+3 = return 4
+(4,5)=> 5<10; if true; then 4+5 = return 9
+(9,99)=> 99 < 10;if false return the accmulate value from previous i.e 9 
+(9,11)
+*/
+// see above explanation
+let reducers = [1,3,5,99,11,12];
+let numberSum = (acc,curr)=>{
+  if(curr < 10){
+    acc = acc + curr
+  }
+  return acc;
+};
+let supp = reducers.reduce(numberSum,0)
+console.log(supp)//9
+/* H.W: [1,3,5,2,22,11,9]
+Question1: Find the sum of odd number in the array i.e 33;
+Question2: return an object with sum of odd number and sum of even number i.e {oddSum:55,evenSum:88}
+*/
+let itemArray = [1,3,5,2,22,11,9];
+let sumOdd = (acc,curr)=>{
+  //For each element in the array, check if it's odd. If true, add it to acc[0].
+  if(curr % 2 !== 0){
+    acc[0] = acc[0] + curr
+  }
+  return acc
+}
+ // Initialize with an array containing [0]
+let findResult = itemArray.reduce(sumOdd,[0])
+console.log(findResult)
+let sumOddEven = (acc,curr)=>{
+  if(curr % 2 !== 0){
+    acc.oddSum = acc.oddSum + curr
+  }else{
+    acc.evenSum = acc.evenSum + curr
+  }
+  return acc
+}
+let sumEvenResult = itemArray.reduce(sumOddEven,{oddSum:0,evenSum:0})
+console.log(sumEvenResult)
+
