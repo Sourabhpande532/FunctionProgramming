@@ -274,7 +274,10 @@ console.log(supp)//9
 Question1: Find the sum of odd number in the array i.e 33;
 Question2: return an object with sum of odd number and sum of even number i.e {oddSum:55,evenSum:88}
 */
+// data structure
 let itemArray = [1,3,5,2,22,11,9];
+
+// logic 
 let sumOdd = (acc,curr)=>{
   //For each element in the array, check if it's odd. If true, add it to acc[0].
   if(curr % 2 !== 0){
@@ -282,6 +285,7 @@ let sumOdd = (acc,curr)=>{
   }
   return acc
 }
+// iteration peace
  // Initialize with an array containing [0]
 let findResult = itemArray.reduce(sumOdd,[0])
 console.log(findResult)
@@ -296,3 +300,12 @@ let sumOddEven = (acc,curr)=>{
 let sumEvenResult = itemArray.reduce(sumOddEven,{oddSum:0,evenSum:0})
 console.log(sumEvenResult)
 
+// data structure
+let numbersX = [2,3,5,6,44,33,23];
+// logic Part 
+let oddSumVal = (acc,curr)=>curr%2===0?acc:acc+curr;
+// you can use instead acc=sum and curr=num 
+// iteration peace come's from return
+let resultOddSum = numbersX.reduce(oddSumVal,0);
+console.log(resultOddSum)//64
+//1:46
