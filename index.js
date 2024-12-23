@@ -151,6 +151,8 @@ Only if you want to change one peace of object age so follow this methode using 
 
 const calculateBirthAge = ( person ) => ( {
   ...person,
+  // name: person.name = "Vaishnavi Sinha",
+  address:person.address = "Guru deo Ward No. 8 bhiwapur",
   age: person.age + 1,
 } );
 let rahulBirthday = { name: "Rahul Sinha", address: "Vimal Chouk", age: 34 };
@@ -309,3 +311,28 @@ let oddSumVal = (acc,curr)=>curr%2===0?acc:acc+curr;
 let resultOddSum = numbersX.reduce(oddSumVal,0);
 console.log(resultOddSum)//64
 //1:46
+// Logic part 
+const reduceOddEven = (getOddEven,num) => num % 2 === 0 ? {...getOddEven,even:getOddEven.even + num} : {...getOddEven,odd:getOddEven.odd + num};
+let oddEvenObj = {even:0,odd:0}
+// console.log(oddEvenObj === reduceOddEven(oddEvenObj,22)) //false
+let resultOddEven = itemArray.reduce(reduceOddEven,oddEvenObj);
+console.log(resultOddEven)
+
+// odd 
+/* function reduceOddEven(getOddEven,num){
+  if(num % 2 === 0){
+    return {...getOddEven,
+      even:getOddEven.even + num
+    }
+  }else{
+    return {
+      ...getOddEven,
+      odd:getOddEven.odd + num
+    }
+  }
+} 
+let oddEvenObj = {even:0,odd:0}
+let resultOddEven = itemArray.reduce(reduceOddEven,oddEvenObj);
+console.log(resultOddEven)
+*/
+
