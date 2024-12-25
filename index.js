@@ -339,27 +339,32 @@ console.log(resultOddEven)
 
 /* 
 @CURRING
--const add = (num1,num2) => num1+num2 as earlier we use
+:When to use curying when we don't have specific value at that time 
+-const add = (num1,num2) => num1+num2 as earlier we use see //previously below to more presice 351 line
 -👍sometimes it's difficult to have both values at the same time it might will come later in some scenario so from that point of view currying come into play 
 -👍you'll get one value & stored that value in function inside function bez you don't have global variable in function Programming so currying is basically way of saving one value into an function and then using & calling that function after it later 
--👍Let's supoose behind the API so you get first data from API then 2nd date will get after later e.g
-
+-👍Let's supoose behind the API so you get first data from API then 2nd date will get after later e.g for API perspective use those currying ... for later coming part stored
 -👍function 1 return function & function 2 will return addition of its number (value of both added)
 
 Question: create a function which takes your name and return a function which would add your name to anything(msg)
 */
+
 // previously:
 // -function 1 return function & function 2 will return addition of its number (value of both added)
 const add = (num1, num2) => num1 + num2;
 console.log(add(4, 4)); //8
-// after introduce es6
+// after introduce es6 try to solve on terminal inspect
 const addNum = (num1) => (num2) => num1 + num2;
 // console.log(addNum(3)(9))//12
+console.log(typeof addNum)
+
 const addTwoNumber = addNum(29);
 console.log(addTwoNumber(71));
 
 const nameLogger = (name) => (msg) => console.log(`${name} says, ${msg}`);
 const sourabhLogger = nameLogger("Saahu");
+// console.dir(sourabhLogger)
+// fetch("xyz").then(msg=>sourabhLogger(msg))//you can use calling api
 sourabhLogger("This movie is superstart");
 
 // or methode but diffent names
@@ -396,3 +401,17 @@ const latteOrder = coffeeOrder("latte");
 const orderMessage = latteOrder("medium");
 
 console.log(orderMessage); // Output: "Your latte costs $4." */
+
+
+/* 
+@COMPOSATION:
+Mostly use in react 
+Question1:
+Write a function which can log any text with your userName.
+another function which can write any text with your userID.
+Now,compose both function to pure one function which can log any text with book userName + userID; 
+*/
+const logWithMyName = msg => `Sourabh Says, ${msg}`;
+const logWithMyID = msg => `ID: 123456 :: ${msg}`;
+const logWithIDAndName = msg => logWithMyID(logWithMyName(msg))
+console.log(logWithIDAndName("Believe in process No matter how it is!"));
