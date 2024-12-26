@@ -406,12 +406,31 @@ console.log(orderMessage); // Output: "Your latte costs $4." */
 /* 
 @COMPOSATION:
 Mostly use in react 
+output of 1 function as input to another function
+in More details: Two function f(x),g(x) output of f(x) should go to g(x) i.e g(f(x))
+e.g: const add = (num1,num2) => num1 + num2;
+console.log(add(3,4)) //7 
+-this is prime example of COMPOSATION the output of this function the input to outer function 
+-is this callback No. in callback you call the function later when you callback it required function [].map() but when you do console.log(...data) it's require data
+
 Question1:
 Write a function which can log any text with your userName.
 another function which can write any text with your userID.
 Now,compose both function to pure one function which can log any text with book userName + userID; 
 */
+const addNumbers = (num1,num2)=> num1 + num2;
+// console.log(addNumbers(3,66))
+
+const double = num => num * 2;
+// double(addNumbers(45,55))
+console.log(double(addNumbers(45,55)))
+console.log(addNumbers(double(addNumbers(2,3)),10))
+
 const logWithMyName = msg => `Sourabh Says, ${msg}`;
 const logWithMyID = msg => `ID: 123456 :: ${msg}`;
 const logWithIDAndName = msg => logWithMyID(logWithMyName(msg))
 console.log(logWithIDAndName("Believe in process No matter how it is!"));
+
+// INTERVIEW POINT OF VIEW (HW):: Write a function compose which can take any number of function and return a function which will run the given function in order when called with an argument
+//NOTE: Write the function compose leater you can use n times needs 
+// requirement:: currying,reduce,rest parameter,we don't know how many values can be passed to compose
