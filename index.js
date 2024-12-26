@@ -433,4 +433,8 @@ console.log(logWithIDAndName("Believe in process No matter how it is!"));
 
 // INTERVIEW POINT OF VIEW (HW):: Write a function compose which can take any number of function and return a function which will run the given function in order when called with an argument
 //NOTE: Write the function compose leater you can use n times needs 
-// requirement:: currying,reduce,rest parameter,we don't know how many values can be passed to compose
+// requirement:: currying,reduce,COMPOSATION rest parameter,we don't know how many values can be passed to compose
+//e.g let increment = num => num + 1
+//e.g let square = num => num * num
+//e.g let incrementThenSquare = compose(increment,square) compose(2)//9
+
