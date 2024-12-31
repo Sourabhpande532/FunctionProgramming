@@ -225,6 +225,7 @@ const numberList = [1, 2, 3, 58, 5, 6, 62, 8, 70]
 const productArray = [1, 2, 3, 7, 5, 6, 8, 9]
 // your output should be: 96
 // (5) Given an array of object. if the name of an item is more than 5 characters in length, add type as "vegetable". if the name of an item is less than or equal to 5 characters in length, add type as "fruit";
+
 const fruitList = [
   { name: "Apple" },
   { name: "Mango" },

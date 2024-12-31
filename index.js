@@ -1,5 +1,7 @@
-console.log( "Function Programming" );
-/* Function Programming it just like bread and butter for React as i know and function as first class citizen why
+console.log( "Function Programming for React");
+/* 
+-It just a building block,it just a mental model using which you can write better react  
+-Function Programming it just like bread and butter for React as i know and function as first class citizen why
 after 2 years of experience you'll not write features,you'll writing your own code,own function,your own error handling framework,api's, your logging framework on frontend,some abstraction on state management not only features base if ther is card if i click the state should be change. so how it helps us see fp*/
 
 /*🕯️🕯️🕯️ Note: Do Homework all 5 concept of function Programming in depth manner */
@@ -41,6 +43,7 @@ inquiryThief("Rohit Thakur",printCaseAttemp) */
 let Obj = {};
 Obj.printName = ( printAge ) => console.log( `The age in between ${ printAge }` );
 Obj.printName( 45 );
+
 // 4) can be added to array as well
 arr = [
   "1",
