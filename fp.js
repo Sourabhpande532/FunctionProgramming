@@ -183,7 +183,6 @@ console.log(assignTask("Login Page",teastingTask))
 
 /* 
 a leader doesn’t do everything themselves but depends on experts (functions) to handle specific tasks efficiently. It showcases flexibility and reuse in both teamwork and coding! */
-
 /*  Question: Restaurant Order
 Write a prepareFood function that takes a foodItem (like "chicken") and a cookingStyle function as arguments. The cookingStyle function defines how the food should be prepared.*/
 
@@ -199,3 +198,72 @@ console.log(prepareFood("fish",fried));
 //   return madeItemVariety(item)
 // }
 // console.log(prepareFood("checken",withSpicyRice));
+
+/* Question 1: Perform Operation
+Write a function performOperation that takes two numbers and a callback function as arguments. The callback function should define the operation to perform (e.g., addition, subtraction, etc.). */
+
+const addition = (n1,n2)=>n1+n2
+const subtraction = (n1,n2)=>n1-n2;
+const product = (n1,n2)=> n1 * n2
+function performOperation(num1,num2,calculate){
+return calculate(num1,num2)
+}
+console.log(performOperation(8,9,addition));
+console.log(performOperation(30,14,subtraction));
+console.log(performOperation(34,5,product));
+
+/* Question 2: Filter Array
+Create a function filterArray that accepts an array and a filtering function. The filtering function decides whether to keep each element in the array. */
+
+const numbersArray = [1,2,3,4,5,6];
+const isEven = num => num % 2 === 0;
+const isOdd = num => num % 2 !== 0;
+const isDivisibleBy3 = num => num % 3 === 0;
+
+function filterArray(arr,filtering){
+  return arr.filter(filtering)
+}
+console.log(filterArray(numbersArray,isEven))//[2,4,6]
+console.log(filterArray(numbersArray,isOdd)); //[1,3,5]
+console.log(filterArray(numbersArray,isDivisibleBy3)); // [3,6]
+
+/* Question 3: Transform Array
+Write a function transformArray that takes an array and a transformation function as arguments. It should apply the transformation function to every element of the array and return a new array. */
+let numberList = [1,3,5,4,5,7,56,8];
+
+const doubleNumber = num => num * 2;
+
+function transformArray(arrs,processCalc){
+return arrs.map(processCalc)
+}
+console.log(transformArray(numberList,doubleNumber)); //[2,6,10,8,10,14,112,16]
+
+/* Question 4: Custom Logger
+Create a function customLogger that accepts a message and a logging function as arguments. The logging function should decide how to log the message (e.g., uppercase, prefix, etc.).
+const toUpperCase = (msg) => console.log(msg.toUpperCase());
+const addPrefix = (msg) => console.log(`INFO: ${msg}`);
+customLogger("hello world", toUpperCase); // Output: HELLO WORLD
+customLogger("hello world", addPrefix);   // Output: INFO: hello world
+ */
+const toUpperCase = (msg)=> console.log(msg.toUpperCase());
+const toLowerCase = (msg)=>console.log(msg.toLowerCase());
+const addPrefix = (msg)=>console.log(`lorem-text ${msg}`);
+
+function customLogger(msg,loggingUtils){
+  loggingUtils(msg)
+}
+customLogger("Hello Sammer",toUpperCase)
+customLogger("HELLOW BUDdy",toLowerCase)
+customLogger("zunk dfj dfj",addPrefix);
+
+/* Question 5: Apply Discounts
+Write a function applyDiscount that accepts a price and a discount function. The discount function should calculate the discounted price based on the original price. */
+
+const flatDiscount = price => price * 0.5;
+const percentageDiscount = price => price * 0.8
+
+function appleDiscount(price,discount){
+  return discount(price)
+}
+console.log(appleDiscount(100,flatDiscount));//50
+console.log(appleDiscount(200,percentageDiscount));//160
