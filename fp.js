@@ -164,35 +164,36 @@ const printName = ( printtLength ) =>
 printName( 8 );
 
 // SENT TO OTHER FUNCTION AS ARGUMENTS
+/* callback,promises,then & catch */
 
 /*
 Real-World Scenario: Task Delegation in a Team
 Imagine you're a team leader. Your job is to assign tasks to team members based on their expertise (e.g., design, coding, or testing). You give the task and let the team member (a function) handle it in their specific style. */
 
-const taskDesign = (task)=> `Designing ${task}`
-const taskCoding = (task)=> `Using react Js Design ${task}`
-const teastingTask = (task)=>`Teasting ${task}`
+const taskDesign = ( task ) => `Designing ${ task }`;
+const taskCoding = ( task ) => `Using react Js Design ${ task }`;
+const teastingTask = ( task ) => `Teasting ${ task }`;
 
-// Team leader base on experties assign task! 
-function assignTask(task,teamMember){
-  return teamMember(task)
+// Team leader base on experties assign task!
+function assignTask( task, teamMember ) {
+  return teamMember( task );
 }
-console.log(assignTask("Homepage",taskDesign));
-console.log(assignTask("Payment Gatway ",taskCoding));
-console.log(assignTask("Login Page",teastingTask))
+console.log( assignTask( "Homepage", taskDesign ) );
+console.log( assignTask( "Payment Gatway ", taskCoding ) );
+console.log( assignTask( "Login Page", teastingTask ) );
 
 /* 
 a leader doesn’t do everything themselves but depends on experts (functions) to handle specific tasks efficiently. It showcases flexibility and reuse in both teamwork and coding! */
 /*  Question: Restaurant Order
 Write a prepareFood function that takes a foodItem (like "chicken") and a cookingStyle function as arguments. The cookingStyle function defines how the food should be prepared.*/
 
-const grilled = (testFood)=> `Grilled-Spicy ${testFood}`
-const fried = (testFood)=> `fried ${testFood}`
-const prepareFood = (foodItem,cookingStyle)=>cookingStyle(foodItem)
+const grilled = ( testFood ) => `Grilled-Spicy ${ testFood }`;
+const fried = ( testFood ) => `fried ${ testFood }`;
+const prepareFood = ( foodItem, cookingStyle ) => cookingStyle( foodItem );
 
-console.log(prepareFood("Checken",grilled));
-console.log(prepareFood("fish",fried));
-// OR 
+console.log( prepareFood( "Checken", grilled ) );
+console.log( prepareFood( "fish", fried ) );
+// OR
 // const withSpicyRice = (test)=>`Made with Spicy Rice ${test}`
 // function prepareFood(item,madeItemVariety){
 //   return madeItemVariety(item)
@@ -202,41 +203,41 @@ console.log(prepareFood("fish",fried));
 /* Question 1: Perform Operation
 Write a function performOperation that takes two numbers and a callback function as arguments. The callback function should define the operation to perform (e.g., addition, subtraction, etc.). */
 
-const addition = (n1,n2)=>n1+n2
-const subtraction = (n1,n2)=>n1-n2;
-const product = (n1,n2)=> n1 * n2
-function performOperation(num1,num2,calculate){
-return calculate(num1,num2)
+const addition = ( n1, n2 ) => n1 + n2;
+const subtraction = ( n1, n2 ) => n1 - n2;
+const product = ( n1, n2 ) => n1 * n2;
+function performOperation( num1, num2, calculate ) {
+  return calculate( num1, num2 );
 }
-console.log(performOperation(8,9,addition));
-console.log(performOperation(30,14,subtraction));
-console.log(performOperation(34,5,product));
+console.log( performOperation( 8, 9, addition ) );
+console.log( performOperation( 30, 14, subtraction ) );
+console.log( performOperation( 34, 5, product ) );
 
 /* Question 2: Filter Array
 Create a function filterArray that accepts an array and a filtering function. The filtering function decides whether to keep each element in the array. */
 
-const numbersArray = [1,2,3,4,5,6];
-const isEven = num => num % 2 === 0;
-const isOdd = num => num % 2 !== 0;
-const isDivisibleBy3 = num => num % 3 === 0;
+const numbersArray = [1, 2, 3, 4, 5, 6];
+const isEven = ( num ) => num % 2 === 0;
+const isOdd = ( num ) => num % 2 !== 0;
+const isDivisibleBy3 = ( num ) => num % 3 === 0;
 
-function filterArray(arr,filtering){
-  return arr.filter(filtering)
+function filterArray( arr, filtering ) {
+  return arr.filter( filtering );
 }
-console.log(filterArray(numbersArray,isEven))//[2,4,6]
-console.log(filterArray(numbersArray,isOdd)); //[1,3,5]
-console.log(filterArray(numbersArray,isDivisibleBy3)); // [3,6]
+console.log( filterArray( numbersArray, isEven ) ); //[2,4,6]
+console.log( filterArray( numbersArray, isOdd ) ); //[1,3,5]
+console.log( filterArray( numbersArray, isDivisibleBy3 ) ); // [3,6]
 
 /* Question 3: Transform Array
 Write a function transformArray that takes an array and a transformation function as arguments. It should apply the transformation function to every element of the array and return a new array. */
-let numberList = [1,3,5,4,5,7,56,8];
+let numberList = [1, 3, 5, 4, 5, 7, 56, 8];
 
-const doubleNumber = num => num * 2;
+const doubleNumber = ( num ) => num * 2;
 
-function transformArray(arrs,processCalc){
-return arrs.map(processCalc)
+function transformArray( arrs, processCalc ) {
+  return arrs.map( processCalc );
 }
-console.log(transformArray(numberList,doubleNumber)); //[2,6,10,8,10,14,112,16]
+console.log( transformArray( numberList, doubleNumber ) ); //[2,6,10,8,10,14,112,16]
 
 /* Question 4: Custom Logger
 Create a function customLogger that accepts a message and a logging function as arguments. The logging function should decide how to log the message (e.g., uppercase, prefix, etc.).
@@ -245,25 +246,156 @@ const addPrefix = (msg) => console.log(`INFO: ${msg}`);
 customLogger("hello world", toUpperCase); // Output: HELLO WORLD
 customLogger("hello world", addPrefix);   // Output: INFO: hello world
  */
-const toUpperCase = (msg)=> console.log(msg.toUpperCase());
-const toLowerCase = (msg)=>console.log(msg.toLowerCase());
-const addPrefix = (msg)=>console.log(`lorem-text ${msg}`);
+const toUpperCase = ( msg ) => console.log( msg.toUpperCase() );
+const toLowerCase = ( msg ) => console.log( msg.toLowerCase() );
+const addPrefix = ( msg ) => console.log( `lorem-text ${ msg }` );
 
-function customLogger(msg,loggingUtils){
-  loggingUtils(msg)
+function customLogger( msg, loggingUtils ) {
+  loggingUtils( msg );
 }
-customLogger("Hello Sammer",toUpperCase)
-customLogger("HELLOW BUDdy",toLowerCase)
-customLogger("zunk dfj dfj",addPrefix);
+customLogger( "Hello Sammer", toUpperCase );
+customLogger( "HELLOW BUDdy", toLowerCase );
+customLogger( "zunk dfj dfj", addPrefix );
 
 /* Question 5: Apply Discounts
 Write a function applyDiscount that accepts a price and a discount function. The discount function should calculate the discounted price based on the original price. */
 
-const flatDiscount = price => price * 0.5;
-const percentageDiscount = price => price * 0.8
+const flatDiscount = ( price ) => price * 0.5;
+const percentageDiscount = ( price ) => price * 0.8;
 
-function appleDiscount(price,discount){
-  return discount(price)
+function appleDiscount( price, discount ) {
+  return discount( price );
 }
-console.log(appleDiscount(100,flatDiscount));//50
-console.log(appleDiscount(200,percentageDiscount));//160
+console.log( appleDiscount( 100, flatDiscount ) ); //50
+console.log( appleDiscount( 200, percentageDiscount ) ); //160
+
+// CAN BE ADDED TO OBJECT EXAMPLE
+
+let printIdea = {};
+printIdea.idea = ( idea ) => console.log( `It All About ${ idea }` );
+printIdea.idea( "Hello" );
+
+/* 
+Imagine you own a coffee shop, and you want to manage customer orders. You decide to create an object called orderSystem that stores functions to handle customer orders efficiently.
+In the coffee shop example, the object orderSystem acts like a manager or system that handles all the operations. The functions (methods) are like tools added to this system, enabling it to perform tasks automatically without needing external intervention every time.
+This is a real-world application where an object (in this case, orderSystem) contains methods to perform tasks (like addOrder or getTotalEarnings), which is exactly how we "add functions to an object" in JavaScript.
+*/
+
+let orderSystem = {
+  orders: [],
+  // OR
+  // addOrder( name, item, price ) {
+  //   this.orders.push( { name, item, price } );
+  //   console.log( `${ name } ordered ${ item } for ${ price }` );
+  // },
+
+  // OR(Avoid .push )
+  addOrder( name, item, price ) {
+    this.orders = [...this.orders, { name, item, price }];
+    console.log( `${ name } orderd ${ item } for Rs ${ price }` );
+  },
+
+  // OR
+  // addOrder:(orders,name,item,price)=>{
+  // const updateArray = [...orders,{name,item,price}];
+  // console.log(`${name} orderd for ${item} Rs ${price}`);
+  // return updateArray
+  // },
+  // orderSystem.orders = orderSystem.addOrder(orderSystem.orders, "Bob", "Latte", 5);
+  // console.log(orderSystem.orders);
+
+  /* Why { name, item, price } is Used:
+     Object Representation: Each order is represented as an object to group related data (customer name, item, and price) together. This makes the data easier to manage and understand.
+     const getPizzaList = orderSystem.orders.filter((order) => order.item === "pizza");
+     console.log(getPizzaList); */
+
+  // FUNCTION TO LIST ORDER
+  listOrder() {
+    if ( this.orders.length === 0 ) {
+      console.log( "No order deal" );
+    } else {
+      console.log( "Orderd List" );
+      this.orders.forEach( ( order ) => {
+        console.log( `${ order.name } order ${ order.item } for ${ order.price }` );
+      } );
+    }
+  },
+
+  // FUNCTION TO REMOVE ORDER
+
+  // removeOrder( name ) {
+  //   // Find the first element with a string value name and return index
+  //   let index = this.orders.findIndex( ( order ) => order.name === name );
+  //   if ( index !== -1 ) {
+  //     console.log( `Order for ${ this.orders[index].name } has been remove` );
+  //     this.orders.splice( index, 1 );
+  //   } else {
+  //     console.log( `No order found for ${ name }` );
+  //   }
+  // },
+  // OR 
+  removeOrder(name){
+  // save the original value length
+  let originalLength = this.orders.length;
+  // remove item 
+  this.orders = this.orders.filter(itemName=>itemName.name !== name);
+  if(this.orders.length < originalLength){
+    console.log(`The ${name} has been removed successfully`);
+  }else{
+    console.log(`The ${name} still it remain`);
+  }
+  },
+
+  // FUNCTION TO TOTAL ALL ITEM
+  getTotalOrder() {
+    let total = this.orders.reduce(
+      ( sum, itemPrice ) => sum + itemPrice.price,
+      0
+    );
+    console.log( `Total of all orders is ${ total }` );
+    return total;
+  },
+};
+
+orderSystem.addOrder( "harish", "pizza", 34 );
+orderSystem.addOrder( "Dhamu The killar", "pizza", 90 );
+orderSystem.addOrder( "Baman", "pizza", 34 );
+orderSystem.addOrder( "Mahesh", "Rasgulla", 35 );
+orderSystem.addOrder( "Hitesh", "Kulfi", 35 );
+orderSystem.removeOrder( "harish" );
+orderSystem.removeOrder("Baman")
+console.log( orderSystem.orders );
+orderSystem.listOrder();
+orderSystem.getTotalOrder();
+
+// FILTER OUT SPECIFIC ITEM 
+const getPizzaList = orderSystem.orders.filter(
+  ( order ) => order.item === "pizza"
+);
+console.log( getPizzaList );
+
+/*
+ Imagine we are managing a to-do list, where each task is represented as an object in an array. Here's how filter and the logic you're struggling with work: */
+const todoList = {
+  tasks: [
+    { id: 1, name: "Clen the store" },
+    { id: 2, name: "Find Gloceries" },
+    { id: 3, name: "Keep your kichen clean" }
+  ],
+  removeTaskItem( taskName ) {
+    // Save the Original length of array list item 
+    let originalLenght = this.tasks.length;
+    // remove item
+    this.tasks = this.tasks.filter(task => task.name !== taskName );
+
+    // Check if the task was removed
+    if (this.tasks.length < originalLenght ) {
+      console.log( `The "${taskName}" has been removed` );
+    } else {
+      console.log( `No such task found` );
+    }
+  }
+}
+
+todoList.removeTaskItem("Clen the store")
+console.log(todoList.tasks);
