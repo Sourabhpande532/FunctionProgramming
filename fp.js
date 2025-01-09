@@ -310,19 +310,30 @@ let orderSystem = {
      console.log(getPizzaList); */
 
   // FUNCTION TO LIST ORDER
+  // OR 
+  // listOrder() {
+  //   if ( this.orders.length === 0 ) {
+  //     console.log( "No order deal" );
+  //   } else {
+  //     console.log( "Orderd List" );
+  //     this.orders.forEach( ( order ) => {
+  //       console.log( `${ order.name } order ${ order.item } for ${ order.price }` );
+  //     } );
+  //   }
+  // },
+
+  // OR 
   listOrder() {
     if ( this.orders.length === 0 ) {
-      console.log( "No order deal" );
+      return `No Order found`
     } else {
-      console.log( "Orderd List" );
-      this.orders.forEach( ( order ) => {
-        console.log( `${ order.name } order ${ order.item } for ${ order.price }` );
-      } );
+      return this.orders.map( ( order ) => `orderd ${ order.name } Ordered item i.e ${ order.item }, for RS ${ order.price }` )
     }
   },
 
-  // FUNCTION TO REMOVE ORDER
 
+  // FUNCTION TO REMOVE ORDER
+  // OR
   // removeOrder( name ) {
   //   // Find the first element with a string value name and return index
   //   let index = this.orders.findIndex( ( order ) => order.name === name );
@@ -333,28 +344,37 @@ let orderSystem = {
   //     console.log( `No order found for ${ name }` );
   //   }
   // },
+
   // OR 
-  removeOrder(name){
-  // save the original value length
-  let originalLength = this.orders.length;
-  // remove item 
-  this.orders = this.orders.filter(itemName=>itemName.name !== name);
-  if(this.orders.length < originalLength){
-    console.log(`The ${name} has been removed successfully`);
-  }else{
-    console.log(`The ${name} still it remain`);
-  }
+  removeOrder( name ) {
+    // save the original value length
+    let originalLength = this.orders.length;
+    // remove item 
+    this.orders = this.orders.filter( itemName => itemName.name !== name );
+    if ( this.orders.length < originalLength ) {
+      console.log( `The ${ name } has been removed successfully` );
+    } else {
+      console.log( `The ${ name } still it remain` );
+    }
   },
 
   // FUNCTION TO TOTAL ALL ITEM
+
+  // getTotalOrder() {
+  //   let total = this.orders.reduce(
+  //     ( sum, itemPrice ) => sum + itemPrice.price,
+  //     0
+  //   );
+  //   console.log( `Total of all orders is ${ total }` );
+  //   return total;
+  // },
   getTotalOrder() {
-    let total = this.orders.reduce(
-      ( sum, itemPrice ) => sum + itemPrice.price,
-      0
-    );
-    console.log( `Total of all orders is ${ total }` );
-    return total;
-  },
+    let total = 0;
+    for ( let i = 0; i < this.orders.length; i++ ) {
+      total += this.orders[i].price;
+    }
+    console.log( total );
+  }
 };
 
 orderSystem.addOrder( "harish", "pizza", 34 );
@@ -363,39 +383,106 @@ orderSystem.addOrder( "Baman", "pizza", 34 );
 orderSystem.addOrder( "Mahesh", "Rasgulla", 35 );
 orderSystem.addOrder( "Hitesh", "Kulfi", 35 );
 orderSystem.removeOrder( "harish" );
-orderSystem.removeOrder("Baman")
+orderSystem.removeOrder( "Baman" )
 console.log( orderSystem.orders );
-orderSystem.listOrder();
+// OR
+// orderSystem.listOrder()
+// List Order 
+let orderListSummary = orderSystem.listOrder();
+console.log( orderListSummary );
+if ( Array.isArray( orderListSummary ) ) {
+  console.log( "Summary List" );
+  orderListSummary.forEach( ( summary ) => console.log( summary ) )
+} else {
+  console.log( orderListSummary );
+}
 orderSystem.getTotalOrder();
 
-// FILTER OUT SPECIFIC ITEM 
-const getPizzaList = orderSystem.orders.filter(
-  ( order ) => order.item === "pizza"
-);
-console.log( getPizzaList );
+// // FILTER OUT SPECIFIC ITEM
+// const getPizzaList = orderSystem.orders.filter(
+//   ( order ) => order.item === "pizza"
+// );
+// console.log( getPizzaList );
 
-/*
- Imagine we are managing a to-do list, where each task is represented as an object in an array. Here's how filter and the logic you're struggling with work: */
+
+// /*
+//  Imagine we are managing a to-do list, where each task is represented as an object in an array. Here's how filter and the logic you're struggling with work: */
 const todoList = {
   tasks: [
     { id: 1, name: "Clen the store" },
     { id: 2, name: "Find Gloceries" },
     { id: 3, name: "Keep your kichen clean" }
   ],
+
+  // RESPOSIBLE FOR ADD TASK
+  addTaskss( id, name ) {
+    this.tasks = [...this.tasks, { id, name }];
+    console.log( `add task id${ id } and ${ name }` );
+  },
+
+  // RESPOSIBLE FOR TASK LIST 
+  taskList() {
+    if ( this.tasks.length === 0 ) {
+      return "No Such task found"
+    } else {
+      console.log( "List Task" );
+      return this.tasks.map( ( task ) => `Task Id: ${ task.id } And work assign that is ${ task.name }`
+      )
+    }
+  },
+
+  // RESPOSIBLE FOR TASK LIST 
   removeTaskItem( taskName ) {
-    // Save the Original length of array list item 
+    // Save the Original length of array list item
     let originalLenght = this.tasks.length;
     // remove item
-    this.tasks = this.tasks.filter(task => task.name !== taskName );
+    this.tasks = this.tasks.filter( task => task.name !== taskName );
 
     // Check if the task was removed
-    if (this.tasks.length < originalLenght ) {
-      console.log( `The "${taskName}" has been removed` );
+    if ( this.tasks.length < originalLenght ) {
+      console.log( `The "${ taskName }" has been removed` );
     } else {
       console.log( `No such task found` );
     }
+  },
+
+  // RESPOSIBLE FOR TASK LIST 
+  // OR 
+  getTotalList() {
+    let total = 0;
+    for ( const task of this.tasks ) {
+      total += task.id;
+    }
+    return total;
   }
+  // getTotalList(){
+  // let total = this.tasks.reduce((acc,sum)=>acc+sum.id,0)
+  // return total;
+  // }
 }
 
-todoList.removeTaskItem("Clen the store")
-console.log(todoList.tasks);
+todoList.removeTaskItem( "Clen the store" )
+todoList.addTaskss( 4, "Gas Godaun" )
+const taskListSum = todoList.taskList();
+
+if ( Array.isArray( taskListSum ) ) {
+  console.log( "List of Task Item" )
+  taskListSum.map( ( summary ) => console.log( summary ) )
+} else {
+  console.log( taskListSum );
+}
+let resultTotal = todoList.getTotalList()
+console.log( resultTotal );
+console.log( todoList.tasks );
+
+console.log("---- ---- ----")
+/* 
+Create an object student with the following functions:
+addGrade(subject, grade) - Adds a grade for a specific subject.
+getGrade(subject) - Returns the grade for the given subject.
+calculateAverage() - Calculates and returns the average of all grades. */
+const student = {
+
+}
+student.addGrade("Math",88);
+student.addGrade("Science",89);
