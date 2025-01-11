@@ -475,14 +475,97 @@ let resultTotal = todoList.getTotalList()
 console.log( resultTotal );
 console.log( todoList.tasks );
 
-console.log("---- ---- ----")
+console.log( "---- ---- ----" )
 /* 
 Create an object student with the following functions:
 addGrade(subject, grade) - Adds a grade for a specific subject.
 getGrade(subject) - Returns the grade for the given subject.
-calculateAverage() - Calculates and returns the average of all grades. */
+calculateAverage() - Calculates and returns the average of all grades.
+console.log(student.getGrade("Math")); // Output: 90
+console.log(student.calculateAverage()); // Output: 87.5
+*/
 const student = {
+  // Use an object to store grades with subjects as keys and grades as values
+  // Internal object to store grades 
+  grades: {},
+
+  // addGrade(subject, grade) - Adds a grade for a specific subject.
+  addGrade( subject, grade ) {
+    this.grades[subject] = grade;
+    console.log( this.grades[subject] );
+  },
+
+  //Retrieve Grades: given send subject
+  //Implement getGrade(subject) to fetch/return the grade for a specific subject;
+  getGrade( subject ) {
+    return this.grades[subject] || "No Grade For This Subject"
+  },
+
+  // Calculates and returns the average of all grades
+  calculteAverage() {
+    // The Object.values() static method returns an array of a given object value specially
+    // get all grade Value 
+    const gradeValue = Object.values( this.grades );
+    console.log( "Retive grade", gradeValue );
+    if ( gradeValue.length === 0 ) return 0;
+    // const total = gradeValue.reduce((sum,val)=>sum + val,0);
+    let total = 0
+    for ( const add of gradeValue ) {
+      total += add
+    }
+    return total / gradeValue.length;
+  }
+}
+
+student.addGrade( "Math", 88 );
+student.addGrade( "Science", 89 );
+console.log( student.getGrade( "Math" ) );
+console.log( student.getGrade( "Science" ) );
+console.log( student.calculteAverage() );
+
+/*H.W: Create an object employee that keeps track of an employee's performance in different projects and provides functions to:
+addPerformance(project, score): Add a performance score for a specific project.
+getPerformance(project): Retrieve the performance score for a given project.
+calculateOverallPerformance(): Calculate and return the average performance score across all projects.
+*/
+const employee = {
+  eScore : {},
+  addPerformance(project,score){
+  this.eScore[project] = score 
+  console.log(this.eScore[project]);
+  },
+  getPerformance(project){
+  return this.eScore[project] || "NO GRADE FOUND FOR THE PROJECt"
+  },
+  calculteOverallPerfomance(){
+    let getAllScore = Object.values(this.eScore);
+    if(getAllScore.length === 0) return 0;
+    let totalScore = getAllScore.reduce((sum,curr)=>sum + curr,0);
+    return totalScore / getAllScore.length;
+  }
+}
+
+employee.addPerformance("PROJECT A",85);
+employee.addPerformance("PROJECT B", 98);
+employee.addPerformance("SCIENCE EXIBITION", 67);
+console.log(employee.getPerformance("PROJECT A"));
+console.log("Total AVERAGE",employee.calculteOverallPerfomance().toFixed(2));
+console.log(employee.eScore);
+// HW: can we store employee into array instead of object here 
+
+/* Question 2: Shopping Cart
+Create an object shoppingCart with the following functions:
+addItem(itemName, price) - Adds an item to the cart.
+removeItem(itemName) - Removes an item from the cart.
+getTotal() - Returns the total price of all items in the cart.
+
+shoppingCart.addItem("Apple", 10);
+shoppingCart.addItem("Banana", 5);
+console.log(shoppingCart.getTotal()); // Output: 15
+shoppingCart.removeItem("Apple");
+console.log(shoppingCart.getTotal()); // Output: 5
+*/
+
+const shoppingCart = {
 
 }
-student.addGrade("Math",88);
-student.addGrade("Science",89);
