@@ -529,28 +529,28 @@ getPerformance(project): Retrieve the performance score for a given project.
 calculateOverallPerformance(): Calculate and return the average performance score across all projects.
 */
 const employee = {
-  eScore : {},
-  addPerformance(project,score){
-  this.eScore[project] = score 
-  console.log(this.eScore[project]);
+  eScore: {},
+  addPerformance( project, score ) {
+    this.eScore[project] = score
+    console.log( this.eScore[project] );
   },
-  getPerformance(project){
-  return this.eScore[project] || "NO GRADE FOUND FOR THE PROJECt"
+  getPerformance( project ) {
+    return this.eScore[project] || "NO GRADE FOUND FOR THE PROJECt"
   },
-  calculteOverallPerfomance(){
-    let getAllScore = Object.values(this.eScore);
-    if(getAllScore.length === 0) return 0;
-    let totalScore = getAllScore.reduce((sum,curr)=>sum + curr,0);
+  calculteOverallPerfomance() {
+    let getAllScore = Object.values( this.eScore );
+    if ( getAllScore.length === 0 ) return 0;
+    let totalScore = getAllScore.reduce( ( sum, curr ) => sum + curr, 0 );
     return totalScore / getAllScore.length;
   }
 }
 
-employee.addPerformance("PROJECT A",85);
-employee.addPerformance("PROJECT B", 98);
-employee.addPerformance("SCIENCE EXIBITION", 67);
-console.log(employee.getPerformance("PROJECT A"));
-console.log("Total AVERAGE",employee.calculteOverallPerfomance().toFixed(2));
-console.log(employee.eScore);
+employee.addPerformance( "PROJECT A", 85 );
+employee.addPerformance( "PROJECT B", 98 );
+employee.addPerformance( "SCIENCE EXIBITION", 67 );
+console.log( employee.getPerformance( "PROJECT A" ) );
+console.log( "Total AVERAGE", employee.calculteOverallPerfomance().toFixed( 2 ) );
+console.log( employee.eScore );
 // HW: can we store employee into array instead of object here 
 
 /* Question 2: Shopping Cart
@@ -567,5 +567,83 @@ console.log(shoppingCart.getTotal()); // Output: 5
 */
 
 const shoppingCart = {
-
+  cartStores: {},
+  addItem( itemName, price ) {
+    this.cartStores[itemName] = price;
+    console.log( this.cartStores[itemName] );
+  },
+  getTotal() {
+    let total = Object.values( this.cartStores );
+    if ( total.length === 0 ) return 0;
+    // let result = total.reduce((sum,curr)=>sum + curr,0);
+    let result = 0;
+    for ( let i = 0; i < total.length; i++ ) {
+      result += total[i]
+    }
+    return result;
+  },
+  // removeItem( itemName ) {
+  //   if ( this.cartStores.hasOwnProperty( itemName ) ) {
+  //     delete this.cartStores[itemName]
+  //     console.log( `Item ${ itemName } has been removed from cart` );
+  //   } else {
+  //     console.log( `Item ${ itemName } has been found from cart` );
+  //   }
+  // } 
+  // OR 
+  // removeItem(itemName){
+  // if(this.cartStores.hasOwnProperty(itemName)){
+  //   this.cartStores = Object.fromEntries(Object.entries(this.cartStores).filter(([key])=>key !== itemName));
+  //   console.log(`${itemName} has been removed`);
+  // }else{
+  //   console.log(`${itemName} has yet found!`);
+  // }
+  // }
+/*
+Object.entries(this.cartStores) converts the object into an array of key-value pairs..filter(([key]) => key !== itemName) removes the entry with the specified key.
+Object.fromEntries() converts the filtered array back into an object. */
+// OR 
+removeItem(itemName){
+let newCart = {};
+for(let key in this.cartStores){
+  if(key !== itemName){
+    newCart[key] = this.cartStores[key]
+  }
 }
+// Replace cartStore Replaces the original cartStores object with the newly created newCart object.
+this.cartStores = newCart;
+console.log(`${itemName} removed from the cartss.`);
+}
+}
+/* 
+For key = "Laptop":
+Condition: "Laptop" !== "Laptop" → False.
+Skip this item.
+-----------------
+For key = "Iphone":
+Condition: "Iphone" !== "Laptop" → True.
+Add to newCart: newCart["Iphone"] = 130.
+ */
+
+shoppingCart.addItem( "Laptop", 120 );
+shoppingCart.addItem( "Iphone", 130 );
+shoppingCart.addItem( "washing machine", 100 );
+console.log( shoppingCart.getTotal() );
+shoppingCart.removeItem( "Laptop" )
+console.log( shoppingCart.cartStores );
+console.log( shoppingCart.getTotal() );
+
+console.log("----------------");
+/* Question 3: Library Management
+Create an object library with the following functions:
+addBook(bookName) - Adds a book to the library.
+borrowBook(bookName) - Marks a book as borrowed if it exists.
+listAvailableBooks() - Lists all books that are not borrowed. 
+const library = {
+  // Add functions here
+};
+library.addBook("The Alchemist");
+library.addBook("1984");
+library.borrowBook("1984");
+console.log(library.listAvailableBooks()); // Output: ["The Alchemist"]
+*/
