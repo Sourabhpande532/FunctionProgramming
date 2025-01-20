@@ -310,7 +310,7 @@ let orderSystem = {
      console.log(getPizzaList); */
 
   // FUNCTION TO LIST ORDER
-  // OR 
+  // OR
   // listOrder() {
   //   if ( this.orders.length === 0 ) {
   //     console.log( "No order deal" );
@@ -322,15 +322,17 @@ let orderSystem = {
   //   }
   // },
 
-  // OR 
+  // OR
   listOrder() {
     if ( this.orders.length === 0 ) {
-      return `No Order found`
+      return `No Order found`;
     } else {
-      return this.orders.map( ( order ) => `orderd ${ order.name } Ordered item i.e ${ order.item }, for RS ${ order.price }` )
+      return this.orders.map(
+        ( order ) =>
+          `orderd ${ order.name } Ordered item i.e ${ order.item }, for RS ${ order.price }`
+      );
     }
   },
-
 
   // FUNCTION TO REMOVE ORDER
   // OR
@@ -345,12 +347,12 @@ let orderSystem = {
   //   }
   // },
 
-  // OR 
+  // OR
   removeOrder( name ) {
     // save the original value length
     let originalLength = this.orders.length;
-    // remove item 
-    this.orders = this.orders.filter( itemName => itemName.name !== name );
+    // remove item
+    this.orders = this.orders.filter( ( itemName ) => itemName.name !== name );
     if ( this.orders.length < originalLength ) {
       console.log( `The ${ name } has been removed successfully` );
     } else {
@@ -374,7 +376,7 @@ let orderSystem = {
       total += this.orders[i].price;
     }
     console.log( total );
-  }
+  },
 };
 
 orderSystem.addOrder( "harish", "pizza", 34 );
@@ -383,16 +385,16 @@ orderSystem.addOrder( "Baman", "pizza", 34 );
 orderSystem.addOrder( "Mahesh", "Rasgulla", 35 );
 orderSystem.addOrder( "Hitesh", "Kulfi", 35 );
 orderSystem.removeOrder( "harish" );
-orderSystem.removeOrder( "Baman" )
+orderSystem.removeOrder( "Baman" );
 console.log( orderSystem.orders );
 // OR
 // orderSystem.listOrder()
-// List Order 
+// List Order
 let orderListSummary = orderSystem.listOrder();
 console.log( orderListSummary );
 if ( Array.isArray( orderListSummary ) ) {
   console.log( "Summary List" );
-  orderListSummary.forEach( ( summary ) => console.log( summary ) )
+  orderListSummary.forEach( ( summary ) => console.log( summary ) );
 } else {
   console.log( orderListSummary );
 }
@@ -404,14 +406,13 @@ orderSystem.getTotalOrder();
 // );
 // console.log( getPizzaList );
 
-
 // /*
 //  Imagine we are managing a to-do list, where each task is represented as an object in an array. Here's how filter and the logic you're struggling with work: */
 const todoList = {
   tasks: [
     { id: 1, name: "Clen the store" },
     { id: 2, name: "Find Gloceries" },
-    { id: 3, name: "Keep your kichen clean" }
+    { id: 3, name: "Keep your kichen clean" },
   ],
 
   // RESPOSIBLE FOR ADD TASK
@@ -420,23 +421,24 @@ const todoList = {
     console.log( `add task id${ id } and ${ name }` );
   },
 
-  // RESPOSIBLE FOR TASK LIST 
+  // RESPOSIBLE FOR TASK LIST
   taskList() {
     if ( this.tasks.length === 0 ) {
-      return "No Such task found"
+      return "No Such task found";
     } else {
       console.log( "List Task" );
-      return this.tasks.map( ( task ) => `Task Id: ${ task.id } And work assign that is ${ task.name }`
-      )
+      return this.tasks.map(
+        ( task ) => `Task Id: ${ task.id } And work assign that is ${ task.name }`
+      );
     }
   },
 
-  // RESPOSIBLE FOR TASK LIST 
+  // RESPOSIBLE FOR TASK LIST
   removeTaskItem( taskName ) {
     // Save the Original length of array list item
     let originalLenght = this.tasks.length;
     // remove item
-    this.tasks = this.tasks.filter( task => task.name !== taskName );
+    this.tasks = this.tasks.filter( ( task ) => task.name !== taskName );
 
     // Check if the task was removed
     if ( this.tasks.length < originalLenght ) {
@@ -446,36 +448,36 @@ const todoList = {
     }
   },
 
-  // RESPOSIBLE FOR TASK LIST 
-  // OR 
+  // RESPOSIBLE FOR TASK LIST
+  // OR
   getTotalList() {
     let total = 0;
     for ( const task of this.tasks ) {
       total += task.id;
     }
     return total;
-  }
+  },
   // getTotalList(){
   // let total = this.tasks.reduce((acc,sum)=>acc+sum.id,0)
   // return total;
   // }
-}
+};
 
-todoList.removeTaskItem( "Clen the store" )
-todoList.addTaskss( 4, "Gas Godaun" )
+todoList.removeTaskItem( "Clen the store" );
+todoList.addTaskss( 4, "Gas Godaun" );
 const taskListSum = todoList.taskList();
 
 if ( Array.isArray( taskListSum ) ) {
-  console.log( "List of Task Item" )
-  taskListSum.map( ( summary ) => console.log( summary ) )
+  console.log( "List of Task Item" );
+  taskListSum.map( ( summary ) => console.log( summary ) );
 } else {
   console.log( taskListSum );
 }
-let resultTotal = todoList.getTotalList()
+let resultTotal = todoList.getTotalList();
 console.log( resultTotal );
 console.log( todoList.tasks );
 
-console.log( "---- ---- ----" )
+console.log( "---- ---- ----" );
 /* 
 Create an object student with the following functions:
 addGrade(subject, grade) - Adds a grade for a specific subject.
@@ -486,7 +488,7 @@ console.log(student.calculateAverage()); // Output: 87.5
 */
 const student = {
   // Use an object to store grades with subjects as keys and grades as values
-  // Internal object to store grades 
+  // Internal object to store grades
   grades: {},
 
   // addGrade(subject, grade) - Adds a grade for a specific subject.
@@ -498,24 +500,24 @@ const student = {
   //Retrieve Grades: given send subject
   //Implement getGrade(subject) to fetch/return the grade for a specific subject;
   getGrade( subject ) {
-    return this.grades[subject] || "No Grade For This Subject"
+    return this.grades[subject] || "No Grade For This Subject";
   },
 
   // Calculates and returns the average of all grades
   calculteAverage() {
     // The Object.values() static method returns an array of a given object value specially
-    // get all grade Value 
+    // get all grade Value
     const gradeValue = Object.values( this.grades );
     console.log( "Retive grade", gradeValue );
     if ( gradeValue.length === 0 ) return 0;
     // const total = gradeValue.reduce((sum,val)=>sum + val,0);
-    let total = 0
+    let total = 0;
     for ( const add of gradeValue ) {
-      total += add
+      total += add;
     }
     return total / gradeValue.length;
-  }
-}
+  },
+};
 
 student.addGrade( "Math", 88 );
 student.addGrade( "Science", 89 );
@@ -531,19 +533,19 @@ calculateOverallPerformance(): Calculate and return the average performance scor
 const employee = {
   eScore: {},
   addPerformance( project, score ) {
-    this.eScore[project] = score
+    this.eScore[project] = score;
     console.log( this.eScore[project] );
   },
   getPerformance( project ) {
-    return this.eScore[project] || "NO GRADE FOUND FOR THE PROJECt"
+    return this.eScore[project] || "NO GRADE FOUND FOR THE PROJECt";
   },
   calculteOverallPerfomance() {
     let getAllScore = Object.values( this.eScore );
     if ( getAllScore.length === 0 ) return 0;
     let totalScore = getAllScore.reduce( ( sum, curr ) => sum + curr, 0 );
     return totalScore / getAllScore.length;
-  }
-}
+  },
+};
 
 employee.addPerformance( "PROJECT A", 85 );
 employee.addPerformance( "PROJECT B", 98 );
@@ -551,7 +553,7 @@ employee.addPerformance( "SCIENCE EXIBITION", 67 );
 console.log( employee.getPerformance( "PROJECT A" ) );
 console.log( "Total AVERAGE", employee.calculteOverallPerfomance().toFixed( 2 ) );
 console.log( employee.eScore );
-// HW: can we store employee into array instead of object here 
+// HW: can we store employee into array instead of object here
 
 /* Question 2: Shopping Cart
 Create an object shoppingCart with the following functions:
@@ -578,7 +580,7 @@ const shoppingCart = {
     // let result = total.reduce((sum,curr)=>sum + curr,0);
     let result = 0;
     for ( let i = 0; i < total.length; i++ ) {
-      result += total[i]
+      result += total[i];
     }
     return result;
   },
@@ -589,8 +591,8 @@ const shoppingCart = {
   //   } else {
   //     console.log( `Item ${ itemName } has been found from cart` );
   //   }
-  // } 
-  // OR 
+  // }
+  // OR
   // removeItem(itemName){
   // if(this.cartStores.hasOwnProperty(itemName)){
   //   this.cartStores = Object.fromEntries(Object.entries(this.cartStores).filter(([key])=>key !== itemName));
@@ -599,22 +601,22 @@ const shoppingCart = {
   //   console.log(`${itemName} has yet found!`);
   // }
   // }
-/*
-Object.entries(this.cartStores) converts the object into an array of key-value pairs..filter(([key]) => key !== itemName) removes the entry with the specified key.
-Object.fromEntries() converts the filtered array back into an object. */
-// OR 
-removeItem(itemName){
-let newCart = {};
-for(let key in this.cartStores){
-  if(key !== itemName){
-    newCart[key] = this.cartStores[key]
-  }
-}
-// Replace cartStore Replaces the original cartStores object with the newly created newCart object.
-this.cartStores = newCart;
-console.log(`${itemName} removed from the cartss.`);
-}
-}
+  /*
+  Object.entries(this.cartStores) converts the object into an array of key-value pairs..filter(([key]) => key !== itemName) removes the entry with the specified key.
+  Object.fromEntries() converts the filtered array back into an object. */
+  // OR
+  removeItem( itemName ) {
+    let newCart = {};
+    for ( let key in this.cartStores ) {
+      if ( key !== itemName ) {
+        newCart[key] = this.cartStores[key];
+      }
+    }
+    // Replace cartStore Replaces the original cartStores object with the newly created newCart object.
+    this.cartStores = newCart;
+    console.log( `${ itemName } removed from the cartss.` );
+  },
+};
 /* 
 For key = "Laptop":
 Condition: "Laptop" !== "Laptop" → False.
@@ -629,11 +631,11 @@ shoppingCart.addItem( "Laptop", 120 );
 shoppingCart.addItem( "Iphone", 130 );
 shoppingCart.addItem( "washing machine", 100 );
 console.log( shoppingCart.getTotal() );
-shoppingCart.removeItem( "Laptop" )
+shoppingCart.removeItem( "Laptop" );
 console.log( shoppingCart.cartStores );
 console.log( shoppingCart.getTotal() );
 
-console.log("----------------");
+console.log( "----------------" );
 /* Question 3: Library Management
 Create an object library with the following functions:
 addBook(bookName) - Adds a book to the library.
@@ -647,3 +649,250 @@ library.addBook("1984");
 library.borrowBook("1984");
 console.log(library.listAvailableBooks()); // Output: ["The Alchemist"]
 */
+let library = {
+  bookStore: [],
+  addBook( bookName ) {
+    // Check if the book already exists to avoid duplicates
+    if ( this.bookStore.find( ( book ) => book.name === bookName ) ) {
+      console.log( `The ${ bookName } is already Exits` );
+      return;
+    }
+    // Add the book with borrowed status set to false
+    // this.bookStore.push({name:bookName,borrowed:false})
+    // avoid immutability
+    this.bookStore = [...this.bookStore, { name: bookName, borrowed: false }];
+  },
+  borrowedBook( bookName ) {
+    const book = this.bookStore.find( ( book ) => book.name === bookName );
+    if ( !book ) {
+      console.log( `This ${ bookName } does not exist` );
+    } else if ( book.borrowed ) {
+      console.log( `This book ${ bookName } is already borrowed` );
+    } else {
+      book.borrowed = true;
+      console.log( `it has been recently borrowed ${ bookName }` );
+    }
+  },
+  listOfBorrowedAvailable() {
+    return this.bookStore.filter( book => !book.borrowed ).map( book => book.name )
+  }
+};
+
+library.addBook( "The Alchemist" );
+library.addBook( "1948" );
+library.addBook( "Jungle Book" )
+console.log( library.bookStore );
+library.addBook( "1948" ); //duplicate
+library.borrowedBook( "1948" );
+library.borrowedBook( "1948" );//already borrowed
+console.log( library.listOfBorrowedAvailable() );
+// console.log(library.borrowBook("1948"));
+// console.log(library.listOfAvailableBooks());
+// console.log(library.bookStore);
+
+/* Scenario: Car Rental Management
+Create an object carRental with the following functions:
+addCar(carName) - Adds a car to the rental system.
+rentCar(carName) - Marks a car as rented if it's available.
+listAvailableCars() - Lists all cars that are not currently rented.
+const carRental = {
+  // Add functions here
+};
+carRental.addCar("Toyota Corolla");
+carRental.addCar("Honda Civic");
+carRental.rentCar("Honda Civic");
+console.log(carRental.listAvailableCars()); // Output: ["Toyota Corolla"]
+*/
+const carRental = {
+  carStore: [],
+  addCar( carName ) {
+    let findCar = this.carStore.find( car => car.name === carName );
+    if ( findCar ) {
+      console.log( `Already exits!! This car ${ carName }` )
+      return; // Stops execution of the function ensure not duplicate don't want to procced further i.e use return keyword
+    }
+    // This line won't run if the book already exists 
+    this.carStore = [...this.carStore, { name: carName, rent: false }]
+    console.log( `This car has been added ${ carName }` );
+  },
+
+  /*   rentCar( carName ) {
+      let car = this.carStore.find( markCar => markCar.name === carName );
+      console.log( "find use:", car );
+      if ( !car ) {
+        console.log( `Car Does not Exit in list ${ carName }` );
+      } else if ( car.rent ) {
+        console.log( `Car already Rented` );
+      } else {
+        car.rent = true;
+        console.log( `Mark! ${ carName } has been rented Recently` );
+      }
+    }, */
+  rentCar( carName ) {
+    let carIndex = this.carStore.findIndex( car => car.name === carName )
+    if ( carIndex === -1 ) {
+      console.log( `Car you are looking it for Not Avalable ${ carName }` );
+    } else if ( this.carStore[carIndex].rent ) {
+      console.log( `it has already rented ${ carName }` );
+    } else {
+      this.carStore = this.carStore.map( ( car, index ) => index === carIndex ? { ...car, rent: true } : car )
+      console.log( `${ carName } has been rented.` );
+    }
+  },
+
+  listOfCarList() {
+    return this.carStore.filter( car => !car.carName ).map( car => car.name )
+  }
+
+}
+carRental.addCar( "Toyota Corolla" ) //added
+carRental.addCar( "Toyota Corolla" ) //already exits
+carRental.addCar( "Honda Civic" );  //added 
+carRental.addCar( "Swift Desire" )
+
+carRental.rentCar( "Honda Civic" )//has been rented
+carRental.rentCar( "Honda Civic" )//car already rented
+console.log( carRental.listOfCarList() );
+console.log( carRental.carStore );
+
+console.log( "------------------" );
+/* 
+Question 4: Bank Account
+Create an object bankAccount with the following functions:
+
+deposit(amount) - Adds money to the account.
+withdraw(amount) - Deducts money if the balance is sufficient.
+getBalance() - Returns the current balance.
+const bankAccount = {
+  // Add functions here
+};
+
+bankAccount.deposit(1000);
+bankAccount.withdraw(200);
+console.log(bankAccount.getBalance()); // Output: 800
+*/
+let bankAccount = {
+  balance: 0,
+  deposit( amount ) {
+    if ( amount <= 0 ) {
+      console.log( `Amount must be greter than 0` );
+      return;
+    }
+    this.balance += amount
+    console.log( `Deposited: ${ amount }, Updated Balance New: ${ amount }` );
+  },
+  withdraw( amount ) {
+    if ( amount <= 0 ) {
+      console.log( `Withdraw amount must be greater than 0` );
+      return;
+    }
+    if ( amount > this.balance ) {
+      console.log( "Insufficient Balance: Please Try later" );
+      return;
+    }
+    this.balance -= amount;
+    console.log( `Withdraw: ${ amount }, current Balance: ${ this.balance }` );
+  },
+  getList() {
+    return this.balance;
+  }
+}
+bankAccount.deposit( 1000 )
+bankAccount.withdraw( 200 )
+console.log( `Available Balance:`, bankAccount.getList() );
+/* PRACTICE: 
+Create an object wallet with the following functionalities:
+addMoney(amount): Adds money to the wallet.
+spendMoney(amount): Deducts money if there is enough balance.
+checkBalance(): Returns the current balance in the wallet.*/
+const wallet = {
+  balance: 0,
+  addMoney( amount ) {
+    if ( amount <= 0 ) {
+      console.log( `Amount should be greater than 0` );
+      return;
+    }
+    this.balance += amount
+    console.log( `ADD MONEY: ${ amount }` );
+  },
+  spendMoney( amount ) {
+    if ( amount <= 0 ) {
+      console.log( `Amount Greter than Zero` );
+      return;
+    }
+    if ( amount > this.balance ) {
+      console.log( `Insufficient Funds` );
+      return;
+    }
+    this.balance -= amount;
+    console.log( `Withdraw: ${ amount }, Current Balance: ${ this.balance }` );
+  }
+}
+wallet.addMoney( 500 );
+wallet.addMoney( 530 );
+wallet.spendMoney( 130 );
+
+/* ORR : SOLVE BY ARRAY:
+   Method to add a transaction (positive for deposit, negative for spending)*/
+const walletP = {
+  transaction: [],
+  addTransaction( amount ) {
+    this.transaction = [...this.transaction, amount]
+  },
+  checkBalance() {
+    const balance = this.transaction.reduce( ( total, current ) => total + current, 0 )
+    return balance;
+  },
+  getTrasactionList() {
+    return this.transaction
+  }
+}
+walletP.addTransaction( -500 );
+walletP.addTransaction( 300 );
+walletP.addTransaction( 400 );
+walletP.addTransaction( 500 )
+console.log( "Balance:", walletP.checkBalance() );
+console.log( walletP.getTrasactionList() );
+
+/* Question 5: Car Operations
+Create an object car with the following functions:
+start() - Starts the car.
+stop() - Stops the car.
+drive(speed) - Logs a message with the current speed.
+const car = {
+  // Add functions here
+};
+car.start(); // Output: "Car started"
+car.drive(60); // Output: "Car is driving at 60 km/h"
+car.stop(); // Output: "Car stopped"
+*/
+const car = {
+  isRunning: false,
+  starts() {
+    if ( this.isRunning ) {
+      console.log( "Already Started,Keep a track on it" );
+    } else {
+      this.isRunning = true;
+      console.log( "Car Started" );
+    }
+  },
+  stop() {
+    if ( !this.isRunning ) {
+      console.log( "Already Stopped" );
+    } else {
+      this.isRunning = false;
+      console.log( "Car Stopped" );
+
+    }
+  },
+  drive( speed ) {
+    if ( this.isRunning ) {
+      console.log( `Is in range of ${ speed } km` );
+    } else {
+      console.log( `You need to start the car first` );
+    }
+  },
+}
+car.starts();
+car.drive(45);
+car.stop()
