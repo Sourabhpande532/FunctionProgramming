@@ -42,7 +42,7 @@ inquiryThief("Rohit Thakur",printCaseAttemp) */
 // 3) can be added to object
 let Obj = {};
 Obj.printName = ( printAge ) => console.log( `The age in between ${ printAge }` );
-Obj.printName( 45 );
+Obj.printName(45);
 
 // 4) can be added to array as well
 arr = [
