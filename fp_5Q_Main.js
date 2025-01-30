@@ -163,7 +163,7 @@ const printName = ( printtLength ) =>
   console.log( `My name is ${ printtLength } long` );
 printName( 8 );
 
-// SENT TO OTHER FUNCTION AS ARGUMENTS
+//🕯️🕯️🕯️🕯️🕯️ SENT TO OTHER FUNCTION AS ARGUMENTS
 /* callback,promises,then & catch */
 
 /*
@@ -903,7 +903,7 @@ car.drive( 45 );
 car.stop();
 /* NEW Lession: ------------------- */
 
-/* 4)  IT CAN BE ADDED TO ARRAY AS WELL*/
+/*🕯️🕯️🕯️🕯️🕯️ 4)  IT CAN BE ADDED TO ARRAY AS WELL*/
 arr = [
   "1",
   "2",
@@ -911,6 +911,45 @@ arr = [
   "Rahim",
 ];
 arr[2]( "Publicaly abuse" );
+
+/* 2. Voting System
+Create an array votingSystem with the following elements:
+A string that represents the name of the poll.
+A function castVote(candidateName) that logs the candidate a vote was cast for.
+Example Usage:
+votingSystem[1]("John Doe"); // Output: You voted for John Doe in the Presidential Election
+*/
+let votingSystem = [
+  "Presidential Election",
+  ( castVote ) =>
+    console.log( `You voted for ${ castVote } in the ${ votingSystem[0] }` ),
+];
+votingSystem[1]( "John Doe" );
+// e.g
+let greetingGenerator = [
+  "Welcome to the platform.",
+  ( greetName ) => console.log( `Hello! ${ greetName } ${ greetingGenerator[0] }` ),
+];
+
+greetingGenerator[1]( "Alice," );
+
+/* 
+Cart Processor
+Create an array cartProcessor with the following elements:
+A string representing the cart status.
+A function processCart(items) that logs the items processed in the cart.
+
+Example Usage:
+cartProcessor[1](["Apple", "Banana"]); // Output: Cart processed with items: Apple, Banana
+*/
+const cartProcessor = [
+  "Output:",
+  "Cart processed with items:",
+  function processCart( items ) {
+    console.log( `${ cartProcessor[0] } ${ cartProcessor[1] } ${ items }` );
+  },
+];
+cartProcessor[2].call( cartProcessor, "Apple, Banana" );
 
 /* Scenario: Customer Support System
 Imagine a customer support system where customers can log their issues, and specific actions (like responding to the query or escalating it) are added as functions inside an array. */
@@ -1109,177 +1148,222 @@ Scenario: Online Course Enrollment System
 An online learning platform processes a student's enrollment through a series of steps: validating payment, registering the student for the course, granting access to course materials, and sending a confirmation email to the student.
 */
 const studentEnrollmentProcess = [
-  // Validated payment 
+  // Validated payment
   ( enrollment ) => {
     if ( enrollment.paymentStatus === "Paid" ) {
-      enrollment.status = "Payment Validated"
+      enrollment.status = "Payment Validated";
       console.log( `Payment Validated for ${ enrollment.studentName }` );
     } else {
-      console.log( `Payment not received for ${ enrollment.studentName }. Cannot Access` );
-      enrollment.status = `Faild: - Payment Pending`
+      console.log(
+        `Payment not received for ${ enrollment.studentName }. Cannot Access`
+      );
+      enrollment.status = `Faild: - Payment Pending`;
     }
-    return enrollment
+    return enrollment;
   },
 
   // step 2: Register the student
   ( enrollment ) => {
     if ( enrollment.status === "Payment Validated" ) {
-      enrollment.status = "Student Registered"
-      console.log( `Registration Completed: ${ enrollment.studentName } you are eligible for ${ enrollment.courseName }` );
+      enrollment.status = "Student Registered";
+      console.log(
+        `Registration Completed: ${ enrollment.studentName } you are eligible for ${ enrollment.courseName }`
+      );
     } else {
       console.log( "Cannot register: you'r not completed your payment" );
     }
-    return enrollment
+    return enrollment;
   },
   ( enrollment ) => {
     if ( enrollment.status === "Student Registered" ) {
-      enrollment.status = "Grant Access"
-      console.log( `You can have access or previdge to access all content of ${ enrollment.courseName }` );
+      enrollment.status = "Grant Access";
+      console.log(
+        `You can have access or previdge to access all content of ${ enrollment.courseName }`
+      );
     } else {
-      console.log( `Cannot access grant: ${ enrollment.studentName } Please register and login` );
+      console.log(
+        `Cannot access grant: ${ enrollment.studentName } Please register and login`
+      );
     }
     return enrollment;
   },
   ( enrollment ) => {
     if ( enrollment.status === "Grant Access" ) {
-      enrollment.status = "Confirmation Sent"
-      console.log( `We have send you confirmation to your email ${ enrollment.studentName } please check And Enjoy You route` );
+      enrollment.status = "Confirmation Sent";
+      console.log(
+        `We have send you confirmation to your email ${ enrollment.studentName } please check And Enjoy You route`
+      );
     } else {
       console.log( `Cannot access grant: Contack your assitance` );
     }
     return enrollment;
-  }
-]
+  },
+];
 let studentEnrollment = {
-  studentName: "sourabh", courseName: "Degital Marketing",
-  paymentStatus: "Paid", status: "Enrollment Started"
-}
+  studentName: "sourabh",
+  courseName: "Degital Marketing",
+  paymentStatus: "Paid",
+  status: "Enrollment Started",
+};
 
-studentEnrollment = studentEnrollmentProcess.reduce( ( enrollment, step ) => step( enrollment ), studentEnrollment )
+studentEnrollment = studentEnrollmentProcess.reduce(
+  ( enrollment, step ) => step( enrollment ),
+  studentEnrollment
+);
 
 // for(let step of studentEnrollmentProcess){
 //   studentEnrollment = step(studentEnrollment)
 // }
 console.log( studentEnrollment );
 
-/* 
-OR 
-2)
-const orderPipeline = {
-  order: { items: [], totalPrice: 0 },
-
-  addItem(item) {
-    this.order.items.push(item);
-    return this; // Enables chaining
+const orderLine = {
+  orders: { listItem: [], orderPrice: 0 },
+  addItems( item ) {
+    this.orders.listItem = [...this.orders.listItem, item];
+    return this;
   },
-
-  setTotalPrice(price) {
-    this.order.totalPrice = price;
-    return this; // Enables chaining
+  setTotalPrice( price ) {
+    this.orders.orderPrice = price;
+    return this;
   },
-
-  applyDiscount() {
-    if (this.order.totalPrice > 50) {
-      this.order.discount = 10; // Flat discount for orders over $50
-      this.order.totalPrice -= this.order.discount;
+  applyDiscounts() {
+    if ( this.orders.orderPrice > 50 ) {
+      this.orders.discount = 10;
+      this.orders.orderPrice -= this.orders.discount;
+      return this;
     }
-    return this; // Enables chaining
   },
-
-  calculateTax() {
-    this.order.tax = this.order.totalPrice * 0.08; // 8% tax
-    this.order.totalPrice += this.order.tax;
-    return this; // Enables chaining
+  applyTax() {
+    this.orders.tax = this.orders.orderPrice * 0.08;
+    this.orders.orderPrice += this.orders.tax;
+    return this;
   },
-
-  generateSummary() {
+  generateReport() {
     return {
-      items: this.order.items.join(", "),
-      discount: `$${this.order.discount || 0}`,
-      tax: `$${this.order.tax.toFixed(2)}`,
-      totalPrice: `$${this.order.totalPrice.toFixed(2)}`,
+      item: this.orders.listItem.join( "," ),
+      discount: `${ this.orders.discount || 0 }`,
+      tax: `${ this.orders.tax }`,
+      totalAmount: this.orders.orderPrice,
     };
   },
 };
+const summary = orderLine
+  .addItems( "Rubber" )
+  .addItems( "pear" )
+  .setTotalPrice( 100 )
+  .applyDiscounts()
+  .applyTax()
+  .generateReport();
+console.log( summary );
 
-// Example Usage
-const summary = orderPipeline
-  .addItem("Laptop")
-  .addItem("Mouse")
-  .setTotalPrice(100)
-  .applyDiscount()
-  .calculateTax()
-  .generateSummary();
-
-console.log("Order Summary:", summary);
-*/
-
-const orderLane = {
-  order: {list:[], price:0},
-   
-  addItem(item){
-    this.order.list.push(item);
-    return this
+/* OR 
+const orderLine = {
+  addProducts:(order,item)=>{
+  order.itemList = [...order.itemList,item];
+  return order
   },
-
-  generateReport(){
-   return {
-    list: this.order.list.join(",")
-   }
+  appleDiscount:(order)=>{
+    if(order.price > 50){
+      order.discount = 10;
+      order.price -= order.discount
+    }
+    return order
+  },
+  applyTax:(order)=>{
+  order.tax = order.price * 0.08;
+  order.price += order.tax
+  return order;
+  },
+  shippingCharge:(order)=>{
+    let deliveryCharge = 90;
+    if(order.price > 100){
+      order.charge = `No Delivery Charge`
+    }else{
+      order.charge = deliveryCharge;
+      order.price += deliveryCharge;
+    }
+    return order;
+  },
+  generateSummary:(order)=>{
+    const summary = {
+      item: order.itemList,
+      discount: order.discount,
+      tax: order.tax,
+      deliveryCharge: order.charge,
+      totalAmount: order.price
+    }
+    return summary;
   }
 }
-const summary = orderLane
-.addItem("Laptop-dell")
-.addItem("Mouse")
-.generateReport()
-console.log(summary);
+let orders = {itemList:[],price:0};
+orders = orderLine.addProducts(orders,"Foodball");
+orders = orderLine.addProducts(orders,"Vollyball");
+orders.price = 100;
+orders = orderLine.appleDiscount(orders)
+orders = orderLine.applyTax(orders)
+orders = orderLine.shippingCharge(orders)
+const summay = orderLine.generateSummary(orders);
+console.log(`Order Summary:`,summay); */
 
+/*🕯️🕯️🕯️🕯️🕯️(FUNCTION) CAN BE RETURN FROM OTHER FUNCTION */
+const foodStall = ( dishType ) => {
+  return ( ingredient ) => {
+    return `Here is Your dishtype ${ dishType } made with pure ${ ingredient }`
+  }
+}
+const pastaChef = foodStall( "Pasta" );
+console.log( pastaChef( "chees" ) );
 
+// ANOTHER QUESTION 
+const sugarCaneShop = ( sugarType ) => {
+  return ( ingredient ) => {
+    return `Here is Your ${ sugarType } made with pure ${ ingredient }`
+  }
+}
+const blackCane = sugarCaneShop( "Blank cane" );
+console.log( blackCane( "Ginger & lemon" ) );
+const greenCane = sugarCaneShop( "Green Cane" );
+console.log( greenCane( "Only Lemon" ) );
 
-// const orderLine = {
-//   addProducts:(order,item)=>{
-//   order.itemList = [...order.itemList,item];
-//   return order
-//   },
-//   appleDiscount:(order)=>{
-//     if(order.price > 50){
-//       order.discount = 10;
-//       order.price -= order.discount
-//     }
-//     return order
-//   },
-//   applyTax:(order)=>{
-//   order.tax = order.price * 0.08;
-//   order.price += order.tax
-//   return order;
-//   },
-//   shippingCharge:(order)=>{
-//     let deliveryCharge = 90;
-//     if(order.price > 100){
-//       order.charge = `No Delivery Charge`
-//     }else{
-//       order.charge = deliveryCharge;
-//       order.price += deliveryCharge;
-//     }
-//     return order;
-//   },
-//   generateSummary:(order)=>{
-//     const summary = {
-//       item: order.itemList,
-//       discount: order.discount,
-//       tax: order.tax,
-//       deliveryCharge: order.charge,
-//       totalAmount: order.price
-//     }
-//     return summary;
-//   }
-// }
-// let orders = {itemList:[],price:0};
-// orders = orderLine.addProducts(orders,"Foodball");
-// orders = orderLine.addProducts(orders,"Vollyball");
-// orders.price = 100;
-// orders = orderLine.appleDiscount(orders)
-// orders = orderLine.applyTax(orders)
-// orders = orderLine.shippingCharge(orders)
-// const summay = orderLine.generateSummary(orders);
-// console.log(`Order Summary:`,summay);
+/* Scenario: Online Course Enrollment System 🎓
+Imagine an online education platform where students can enroll in different courses.
+
+👉 Step 1: A student first selects a course category (e.g., Programming, Marketing, Design).
+👉 Step 2: Based on the selected category, they choose a specific course (e.g., JavaScript, SEO, UI/UX).
+👉 Step 3: The system confirms their enrollment with a message.*/
+const enrollmentCourse = ( category ) => {
+  return ( course ) => {
+    return `You've successfully enorolled ${ course } from the Category ${ category }! Enjoy Learning`
+  }
+}
+const programming = enrollmentCourse( "Programming" );
+console.log( programming( "Full STack Javascript Development" ) );
+
+const marketing = enrollmentCourse( "Marketing" );
+console.log( marketing( "SEO & UI" ) );
+
+/* 
+2️⃣ Scenario: Movie Ticket Booking 🎬
+A movie ticket booking system allows users to select a theater location (e.g., Downtown, City Center). After choosing a location, they select a movie (e.g., Inception, Avengers). The system confirms their booking.
+Your ticket for Inception at Downtown Theater is confirmed! Enjoy your movie. 🎥 */
+
+const ticketBookingSystem = ( location ) => {
+  return ( movie ) => {
+    return `Your ticket for ${ movie } at ${ location } is Confirmed! Enjoy Your Movie`
+  }
+}
+const lonavalaEnd = ticketBookingSystem("Lonavala End");
+console.log(lonavalaEnd("Dil Diya Hai sanam"));
+
+/* 3️⃣ Scenario: Personalized Greeting Card 🎉
+A greeting card service lets users choose an occasion (e.g., Birthday, Anniversary, Graduation). After selecting the occasion, they can personalize the message with the recipient's name. The system then generates a final greeting card message.
+Happy Birthday, Alex! Wishing you a fantastic year ahead. 🎂🎉
+*/
+const personalizeCart = (occation)=>{
+  return (recipientName)=>{
+    return `${occation}, ${recipientName}! Wishing you a fantastic year ahead. 🥰🎉🎊`
+  }
+}
+const happyBirthday = personalizeCart("Happy Birthday");
+console.log(happyBirthday("Alex"));
+console.log("REFFERENCE: index.js")

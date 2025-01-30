@@ -54,6 +54,7 @@ arr = [
 arr[2]( "Publicaly abuse" );
 
 // 5) can be return from other function
+
 // A function that returns another function
 function foodStall( dishType ) {
   // return `here is your ${dishType}`
@@ -89,6 +90,8 @@ console.log(triple(5)) */
 /* conclusion: A Function is core peace of Javascript, you can use Javascript for fn as well as imperative Programming
 citizen kya hota hai : Javascript is country and function is first class citizen because they'v all the right's which the other citizen have whatever array,variable have whatever you can with those you can do with function as.*/
 console.log( "----- ----- -----" );
+
+
 /* Declarative Programming in js especiallly react uses ....
 
 remember in vanila js we used to do thing .getElementById .innerhtml but with react you've never have to do such thing bcz we have seen how react abstract away DOM Creation given the this react library comes form function Programming..instead of saying how it should work say what should happen that's mantra
